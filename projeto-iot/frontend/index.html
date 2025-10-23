@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔋 VoltWay IoT - Dashboard</title>
+    
+    <!-- 📱 RESPONSIVIDADE: Meta tag para dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 🎨 ESTILOS: CSS para interface moderna -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- 🔌 WEBSOCKET: Biblioteca Socket.IO para comunicação em tempo real -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    
+    <!-- 📊 GRÁFICOS: Chart.js para visualização de dados -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- 🏠 CABEÇALHO: Título e status da conexão -->
+    <header class="header">
+        <div class="container">
+            <h1>🔋 VoltWay IoT Dashboard</h1>
+            <div class="connection-status">
+                <span id="connectionStatus" class="status-indicator">🔴 Desconectado</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 📊 PRINCIPAL: Área de dados em tempo real -->
+    <main class="main">
+        <div class="container">
+            
+            <!-- 🎯 CARDS DE STATUS: Informações principais -->
+            <section class="status-cards">
+                <div class="card">
+                    <h3>🔌 Status da Estação</h3>
+                    <div class="status-value" id="stationStatus">Carregando...</div>
+                    <div class="status-label">Estado Atual</div>
+                </div>
+                
+                <div class="card">
+                    <h3>🔋 Nível da Bateria</h3>
+                    <div class="battery-container">
+                        <div class="battery">
+                            <div class="battery-level" id="batteryLevel"></div>
+                        </div>
+                        <span class="battery-percentage" id="batteryPercentage">0%</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>⚡ Potência</h3>
+                    <div class="power-value" id="powerValue">0 kW</div>
+                    <div class="power-label">Carregamento</div>
+                </div>
+                
+                <div class="card">
+                    <h3>🌡️ Temperatura</h3>
+                    <div class="temp-value" id="tempValue">0°C</div>
+                    <div class="temp-label">Sistema</div>
+                </div>
+            </section>
+
+            <!-- 📈 GRÁFICOS: Visualização de dados históricos -->
+            <section class="charts-section">
+                <div class="chart-container">
+                    <h3>📊 Potência de Carregamento</h3>
+                    <canvas id="powerChart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <h3>🌡️ Temperatura do Sistema</h3>
+                    <canvas id="tempChart"></canvas>
+                </div>
+            </section>
+
+            <!-- 📋 DADOS DETALHADOS: Tabela com informações completas -->
+            <section class="data-table">
+                <h3>📋 Dados Detalhados</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parâmetro</th>
+                            <th>Valor</th>
+                            <th>Unidade</th>
+                            <th>Última Atualização</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataTableBody">
+                        <!-- 🎯 DADOS DINÂMICOS: Serão preenchidos via JavaScript -->
+                    </tbody>
+                </table>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- 🦶 RODAPÉ: Informações do sistema -->
+    <footer class="footer">
+        <div class="container">
+            <p>🔋 VoltWay IoT - Estação de Carregamento Inteligente</p>
+            <p>📡 Conectado ao ESP32 via WebSocket</p>
+        </div>
+    </footer>
+
+    <!-- 🧠 JAVASCRIPT: Lógica da aplicação -->
+    <script src="app.js"></script>
+</body>
+</html>
+
+<!-- 
+🎓 EXPLICAÇÃO PARA O ALUNO:
+
+📱 RESPONSIVIDADE:
+- Meta viewport permite que a página se adapte a diferentes tamanhos de tela
+- CSS Grid e Flexbox criam layouts responsivos
+
+🔌 WEBSOCKET:
+- Socket.IO permite comunicação em tempo real com o backend
+- Não precisa recarregar a página para ver dados atualizados
+
+📊 GRÁFICOS:
+- Chart.js é uma biblioteca popular para criar gráficos
+- Mostra dados históricos de forma visual
+
+🎨 ESTRUTURA HTML:
+- Semântica: usa tags apropriadas (header, main, section, footer)
+- Acessibilidade: títulos hierárquicos e labels descritivos
+- Organização: separação clara entre estrutura e estilo
+-->
